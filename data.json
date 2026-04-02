@@ -1,10 +1,12 @@
 {
   "status": "success",
+  "code": 1,
   "posts": [
     {
       "id": 1,
-      "title": "First Post",
-      "content": "This is my first blog post"
+      "thumb": "https://",
+      "title": "Hello World",
+      "content": "This is our first blog post on pathfinder football academy app."
     },
     {
       "id": 2,
