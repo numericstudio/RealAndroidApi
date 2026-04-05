@@ -1,0 +1,24 @@
+{
+  "status": "success",
+  "code": 1,
+  "accounts": [
+    {
+      "id": 1,
+      "username": "Saintolamie",
+      "password": "olajireanu",
+      "email": "saintolamie@gmail.com"
+    },
+    {
+      "id": 2,
+      "username": "Nume",
+      "password": "olajireanu",
+      "email": "numeric.creativestudio@gmail.com"
+    },
+    {
+      "id": 3,
+      "username": "Emmaolamie",
+      "password": "olajireanu",
+      "email": "emma.olaleykan@gmail.com"
+    }
+  ]
+}
