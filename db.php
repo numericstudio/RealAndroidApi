@@ -2,7 +2,7 @@
 $host = "mysql.railway.internal";
 $username = "root";
 $password = "PLbnPzefguAWuAJoFSyiHsPgcDxNYDjG";
-$database = "railway";
+$dbname = "railway";
 $port = "3306";
 
 try {
