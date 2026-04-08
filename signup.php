@@ -1,6 +1,13 @@
 <?php
 include "db.php";
 
+if ($_SERVER["REQUEST_METHOD"] == "POST") 
+{
+	if (isset($_POST["ping"])) 
+	{
+		if ($_POST["ping"] == "WordMastery") 
+			{
+
 // Get data
 $username = $_POST['username'] ?? '';
 $email = $_POST['email'] ?? '';
@@ -8,7 +15,11 @@ $password = $_POST['password'] ?? '';
 
 // Validate
 if (empty($username) || empty($email) || empty($password)) {
-    echo json_encode(["status" => "error", "message" => "All fields required"]);
+    echo json_encode([
+			"status" => "success", 
+			"code" => 50,
+			"message" => "All fields required"
+	]);
     exit();
 }
 
@@ -22,7 +33,11 @@ try {
     $check_mail->execute([$email]);
 
     if ($check_mail->rowCount() > 0) {
-        echo json_encode(["status" => "error", "message" => "Email already exists"]);
+        echo json_encode([
+			"status" => "success", 
+			"code" => 100,
+			"message" => "Email already exists"
+		]);
         exit();
     }
     
@@ -31,7 +46,11 @@ try {
     $check_username->execute([$email]);
 
     if ($check_username->rowCount() > 0) {
-        echo json_encode(["status" => "error", "message" => "Username already exists"]);
+        echo json_encode([
+			"status" => "success", 
+			"code" => 150,
+			"message" => "Username already exists"
+		]);
         exit();
     }
 
@@ -39,10 +58,38 @@ try {
     $stmt = $conn->prepare("INSERT INTO accounts (username, email, password) VALUES (?, ?, ?)");
     $stmt->execute([$username, $email, $hashedPassword]);
 
-    echo json_encode(["status" => "success"]);
+    echo json_encode([
+			"status" => "success",
+			"code" => 200
+]);
 
 } catch (PDOException $e) {
-    echo json_encode(["status" => "error", "message" => $e->getMessage()]);
+    echo json_encode([
+			"status" => "success", 
+			"code" => 400,
+			"message" => $e->getMessage()]);
 }
 
+   } else {
+  echo json_encode([
+      "status" => "success",
+      "code" => 500,
+      "message" => $_POST["ping"] . "Isn't a valid ping attribute!"     
+		 ]);
+    }
+ } else {
+    echo json_encode([
+        "status" => "success",
+        "code" => 600,
+        "message" => "Ping attribute value is missing for this request!"
+        ]);    
+    }
+
+} else {
+	echo json_encode([
+      "status" => "success",
+      "code" => 700,
+      "message" => "You can only access this page with a POST request"     
+		 ]);
+    }
 ?>
