@@ -44,7 +44,7 @@ try {
             echo json_encode([
 			"status" => "success", 
 			"code" => 300,
-			"message" => $password . " ///  " . $user['password']
+			"message" => "Incorrect username and password combination"
 	]);
         }
     } else {
