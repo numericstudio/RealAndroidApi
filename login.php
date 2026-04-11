@@ -1,6 +1,6 @@
 <?php
 
-echo password_hash("olajireanu, PASSWORD_DEFAULT);
+echo password_hash("olajireanu", PASSWORD_DEFAULT);
 include "db.php";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") 
